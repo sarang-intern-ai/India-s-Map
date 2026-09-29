@@ -1,0 +1,20 @@
+{
+  "//": "Type-checks the Node-side database tooling in db/. Run: npm run typecheck:db. Separate from the frontend tsconfig (browser libs) — db/ is Node, like pipeline/.",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node"]
+  },
+  "include": ["db"],
+  "exclude": ["node_modules", "dist"]
+}

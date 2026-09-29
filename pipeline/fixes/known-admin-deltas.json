@@ -1,0 +1,49 @@
+{
+  "$comment": "Gazette-sourced administrative changes that the pinned geometry vintage predates. THIS IS NOT A SUBSTITUTE ROSTER. It is used ONLY for reporting and validation: stage 04 writes these into the coverage report, and stage 05 asserts the expected gaps are still present. It NEVER synthesises district records into the published dataset. When the OGD roster is fetched, the roster wins and this file becomes a cross-check that warns if reality has moved again.",
+  "vintage": "lgd-2024",
+  "verifiedOn": "2026-08-12",
+
+  "dissolvedButPresentInGeometry": {
+    "state": "Rajasthan",
+    "stateId": "8",
+    "event": "Rajasthan cabinet dissolved 9 of the 17 districts created under the previous government.",
+    "effectiveDate": "2024-12-28",
+    "stateDistrictCountAfter": 41,
+    "source": "Rajasthan cabinet decision, 28 December 2024 (widely reported; see docs/DATA.md section 6)",
+    "districts": [
+      { "districtId": "769", "nameInLayer": "Dudu", "gazetteName": "Dudu" },
+      { "districtId": "771", "nameInLayer": "Gangapurcity", "gazetteName": "Gangapur City" },
+      { "districtId": "773", "nameInLayer": "Neem Ka Thana", "gazetteName": "Neem Ka Thana" },
+      { "districtId": "776", "nameInLayer": "Anoopgarh", "gazetteName": "Anupgarh" },
+      { "districtId": "778", "nameInLayer": "Jodhpur Gramin", "gazetteName": "Jodhpur Rural" },
+      { "districtId": "779", "nameInLayer": "Sanchor", "gazetteName": "Sanchore" },
+      { "districtId": "780", "nameInLayer": "Shahpura", "gazetteName": "Shahpura" },
+      { "districtId": "781", "nameInLayer": "Kekri", "gazetteName": "Kekri" },
+      { "districtId": "783", "nameInLayer": "Jaipur Gramin", "gazetteName": "Jaipur Rural" }
+    ],
+    "$nameNote": "The nameInLayer vs gazetteName differences are exactly why names are never join keys."
+  },
+
+  "createdButAbsentFromGeometry": {
+    "state": "Ladakh",
+    "stateId": "37",
+    "event": "Five new districts take Ladakh from 2 to 7.",
+    "approvedDate": "2024-08-26",
+    "notifiedDate": "2026-04-27",
+    "stateDistrictCountAfter": 7,
+    "source": "MHA approval Aug 2024; LG notification signed 27 April 2026 (ladakh.gov.in)",
+    "districts": [
+      { "name": "Nubra", "carvedFrom": "Leh", "headquarters": "Diskit" },
+      { "name": "Sham", "carvedFrom": "Leh", "headquarters": "Khaltse" },
+      { "name": "Changthang", "carvedFrom": "Leh", "headquarters": "Nyoma" },
+      { "name": "Zanskar", "carvedFrom": "Kargil", "headquarters": "Padum" },
+      { "name": "Drass", "carvedFrom": "Kargil", "headquarters": "Drass-Ranbirpura" }
+    ],
+    "$geometryNote": "No LGD codes are recorded here because we have not verified them, and no boundary is fabricated. No open dataset is expected to carry these polygons yet. They must reach the product via the OGD roster with status=no_boundary_published, never from this file."
+  },
+
+  "checkedAndCorrect": [
+    { "state": "Assam", "stateId": "18", "count": 35, "note": "Bajali, Biswanath, Hojai and Tamulpur were merged away in Dec 2022 but Bajali and Tamulpur were restored in 2023. No discrepancy claimed." },
+    { "state": "Jammu and Kashmir", "stateId": "1", "count": 22, "note": "20 administered + Mirpur and Muzaffarabad (PoK). Consistent with an India-correct depiction." }
+  ]
+}

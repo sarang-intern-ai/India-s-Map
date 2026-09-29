@@ -1,0 +1,40 @@
+{
+  "$comment": "Declarative geometry exceptions. See docs/DECISIONS.md D-007 (superseded by D-011). Nothing here deletes or invents geometry. A blanket `mapshaper -clean` is NEVER acceptable: when tested on 2026-08-12 it reported `Retained 784 of 785 features`, silently deleting Sanchor.",
+  "vintage": "lgd-2024",
+
+  "exclude": [],
+  "$excludeNote": "Features deliberately dropped from the published dataset. EMPTY BY DESIGN - all 785 source features are preserved. Any entry here must name the exact districtId, a reason and a source, and stage 05 reports the resulting count change.",
+
+  "knownOverlaps": [
+    {
+      "id": "raj-jalore-sanchor",
+      "parentDistrictId": "104",
+      "parentName": "Jalore",
+      "childDistrictId": "779",
+      "childName": "Sanchor",
+      "state": "Rajasthan",
+      "evidence": "A point at Sanchor town (71.7745E, 24.7543N) falls inside both polygons. Verified 2026-08-12.",
+      "resolution": "none-required",
+      "reason": "Sanchor was created out of Jalore in 2023 and DISSOLVED BACK INTO IT on 28 December 2024. The un-recut Jalore polygon is therefore correct for the current administrative reality. Carving Sanchor out of Jalore would make the current map wrong. The overlap resolves itself once Sanchor is marked status=dissolved."
+    },
+    {
+      "id": "raj-jodhpur-gramin",
+      "parentDistrictId": "107",
+      "parentName": "Jodhpur",
+      "childDistrictId": "778",
+      "childName": "Jodhpur Gramin",
+      "state": "Rajasthan",
+      "evidence": "Interior-point test: Jodhpur Gramin's representative point falls inside Jodhpur. Verified 2026-08-12.",
+      "resolution": "none-required",
+      "reason": "Same as above - Jodhpur Rural/Gramin was dissolved back into Jodhpur on 28 December 2024."
+    }
+  ],
+  "$knownOverlapsNote": "These are the ONLY overlapping pairs permitted. Stage 05 fails if any undocumented overlap appears, so a future data refresh that introduces new stacking is caught rather than shipped. Verified by negative test on 2026-08-12: removing an entry here makes stage 05 exit 1.",
+
+  "expectations": {
+    "sourceFeatureCount": 785,
+    "publishedFeatureCount": 785,
+    "maxOverlapKm2": 6000,
+    "$maxOverlapNote": "Measured 4,833 km2 (0.15%) on 2026-08-12. The ceiling is a regression guard, not a target."
+  }
+}

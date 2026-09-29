@@ -1,0 +1,50 @@
+{
+  "name": "indias-map",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "An explorer for India's administrative geography, district-first.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "typecheck:db": "tsc -p tsconfig.db.json --noEmit",
+    "server": "node db/server.mts",
+    "db:migrate": "node db/migrate.mts",
+    "db:sync": "node db/sync.mts",
+    "db:sync:watch": "node db/sync-watch.mts",
+    "db:import": "node db/sync.mts",
+    "db:status": "node db/status.mts",
+    "db:test": "node db/mapping.test.mts",
+    "db:test:word": "node db/word.test.mts",
+    "db:test:crs": "node db/crs.test.mts",
+    "db:test:crs:write": "node db/crsWorkbook.test.mts",
+    "db:test:crs-speech": "node db/crsSpeech.test.mts",
+    "db:parity": "node db/parity.test.mts"
+  },
+  "dependencies": {
+    "fflate": "^0.8.3",
+    "maplibre-gl": "^6.3.0",
+    "pg": "^8.23.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "sax": "^1.6.1",
+    "topojson-client": "^3.1.0",
+    "xlsx": "^0.18.5",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.2.0",
+    "@types/pg": "^8.21.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@types/sax": "^1.2.7",
+    "@types/topojson-client": "^3.1.5",
+    "@vitejs/plugin-react": "^6.0.5",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.1"
+  }
+}

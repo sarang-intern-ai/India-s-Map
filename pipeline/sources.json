@@ -1,0 +1,203 @@
+{
+  "$comment": "Verified source registry. Every entry was inspected on 2026-08-12 - see docs/DATA.md. Do not add a source here without verifying its schema, licence and vintage first.",
+  "vintage": "lgd-2024",
+  "verifiedOn": "2026-08-12",
+  "sources": [
+    {
+      "id": "lgd_districts",
+      "role": "geometry-primary",
+      "title": "LGD district boundaries",
+      "level": "district",
+      "rows": 785,
+      "url": "https://pub-0429b8e3b5a946e69ea007df844a6f1c.r2.dev/admin/districts/LGD_Districts.geojson",
+      "fallbackUrl": "https://github.com/yashveeeeeeer/india-geodata/releases/download/admin/districts/LGD_Districts.geojsonl.7z",
+      "bytes": 93092856,
+      "sha256": "95829298abdd0e80fc514b8c70787bdeef9aaf0e63b348177493045e8b22bab5",
+      "format": "geojson",
+      "crs": "EPSG:4326",
+      "licence": "CC0-1.0 / CC-BY-4.0",
+      "vintage": "Census 2011 base, incrementally updated to a ~2023-24 LGD snapshot",
+      "upstreamRelease": {
+        "repo": "yashveeeeeeer/india-geodata",
+        "tag": "admin/districts",
+        "publishedAt": "2026-03-08"
+      },
+      "attribution": {
+        "primary": {
+          "name": "Local Government Directory",
+          "url": "https://lgdirectory.gov.in/"
+        },
+        "publisher": {
+          "name": "yashveeeeeeer/india-geodata",
+          "url": "https://github.com/yashveeeeeeer/india-geodata"
+        },
+        "mirror": {
+          "name": "bharatlas",
+          "url": "https://bharatlas.com/"
+        }
+      },
+      "keepFields": [
+        "dist_lgd",
+        "state_lgd",
+        "dtname",
+        "stname",
+        "dtcode11",
+        "stcode11",
+        "year_stat"
+      ],
+      "dropFields": {
+        "OBJECTID": "internal ArcGIS row id",
+        "InPoly_FID": "ArcGIS artifact",
+        "SimPgnFlag": "ArcGIS artifact",
+        "MaxSimpTol": "ArcGIS artifact",
+        "MinSimpTol": "ArcGIS artifact",
+        "Dist": "duplicate of dtname",
+        "remarks": "blank on inspection",
+        "SHAPE_Length": "projected artifact - unusable, see DECISIONS D-010",
+        "SHAPE_Area": "projected artifact - 20.8% inflated, see DECISIONS D-010"
+      }
+    },
+    {
+      "id": "lgd_states",
+      "role": "geometry-primary",
+      "title": "LGD state and UT boundaries",
+      "level": "state",
+      "rows": 36,
+      "url": "https://pub-0429b8e3b5a946e69ea007df844a6f1c.r2.dev/admin/states/LGD_States.geojson",
+      "fallbackUrl": "https://github.com/yashveeeeeeer/india-geodata/releases/download/admin/states/LGD_States.parquet",
+      "bytes": 27090105,
+      "sha256": "b18f424b2f60e5f3e10095e2e1f74ae134b68a95e556896e3f9ea37b860c1f3d",
+      "$sha256Note": "Recorded by stage 02 on first fetch (2026-08-12). Any future mismatch is a hard failure.",
+      "$schemaNote": "This layer capitalises differently to the district layer: OBJECTID, STNAME, STCODE11, State_LGD, Shape_Area. Property lookup is case-tolerant (pipeline/lib/geo.ts prop()).",
+      "format": "geojson",
+      "crs": "EPSG:4326",
+      "licence": "CC0-1.0 / CC-BY-4.0",
+      "attribution": {
+        "primary": {
+          "name": "Local Government Directory",
+          "url": "https://lgdirectory.gov.in/"
+        },
+        "publisher": {
+          "name": "yashveeeeeeer/india-geodata",
+          "url": "https://github.com/yashveeeeeeer/india-geodata"
+        }
+      }
+    },
+    {
+      "id": "india_soi_outline",
+      "role": "boundary-verification",
+      "title": "India national outline, Survey of India lineage",
+      "level": "country",
+      "rows": 1,
+      "url": "https://raw.githubusercontent.com/yashveeeeeeer/india-geodata/main/data/administrative/country/india-soi.geojson",
+      "bytes": 12330591,
+      "sha256": "e5321e2010d060c0bffa3b51a1e691af8fbf6063b848c02c123d61d4084cf820",
+      "format": "geojson",
+      "crs": "EPSG:4326",
+      "licence": "CC-BY-4.0",
+      "verifiedBbox": {
+        "minLon": 68.1862,
+        "minLat": 6.756,
+        "maxLon": 97.4153,
+        "maxLat": 37.0783
+      },
+      "$bboxNote": "Reaches 37.08N and 97.42E - full J&K and Arunachal Pradesh claims. India-correct extent. See docs/DATA.md section 3.",
+      "attribution": {
+        "primary": {
+          "name": "Survey of India",
+          "url": "https://surveyofindia.gov.in/"
+        },
+        "publisher": {
+          "name": "DataMeet",
+          "url": "https://github.com/datameet/maps"
+        }
+      }
+    },
+    {
+      "id": "ogd_lgd_districts",
+      "role": "administrative-roster",
+      "title": "Local Government Directory (LGD) - Districts",
+      "url": "https://api.data.gov.in/resource/37231365-78ba-44d5-ac22-3deec40b9197",
+      "resourceId": "37231365-78ba-44d5-ac22-3deec40b9197",
+      "format": "json",
+      "licence": "GODL-India",
+      "request": {
+        "method": "GET",
+        "queryParams": {
+          "api-key": "<from $DATA_GOV_IN_API_KEY, never committed>",
+          "format": "json",
+          "limit": 1000,
+          "offset": "<incremented by limit until records >= total>"
+        },
+        "pagination": "offset/limit; stop when a page returns fewer than `limit` rows or records >= total",
+        "discoveredVia": "https://api.data.gov.in/lists?format=json&filters[title]=Local Government Directory (this listing endpoint needs no key)",
+        "$schemaNote": "Field names are UNVERIFIED - the resource could not be inspected without a key. 01-fetch-admin.ts probes a documented candidate list for the district and state LGD code fields and fails with the actual field names if none match, rather than guessing and mis-joining."
+      },
+      "auth": {
+        "required": true,
+        "envVar": "DATA_GOV_IN_API_KEY",
+        "register": "https://www.data.gov.in/",
+        "$note": "Pipeline-only secret. Never referenced from src/. Without a key the API returns {\"error\": \"Authorization field missing\"}."
+      },
+      "status": "not-yet-fetched",
+      "$statusNote": "Blocking full roster reconciliation. See docs/DATA.md section 2.",
+      "siblings": {
+        "states": "a71e60f0-a21d-43de-a6c5-fa5d21600cdb",
+        "subDistricts": "6be51a29-876a-403a-a6da-42fde795e751",
+        "villages": "c967fe8f-69c4-42df-8afc-8a2c98057437",
+        "localBodies": "1a6c26ed-d67c-40ea-aa20-d38d35f341a5"
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "id": "gb_adm2",
+      "rows": 735,
+      "reason": "Name-only, no LGD codes. De-facto boundaries - fails India-correct depiction."
+    },
+    {
+      "id": "soi_districts",
+      "rows": 742,
+      "reason": "Partial LGD codes only. Retained as an optional geometry cross-check, not as primary."
+    },
+    {
+      "id": "bhuvan_districts",
+      "rows": 663,
+      "reason": "Under-counts vs LGD; carries own codes, not LGD."
+    },
+    {
+      "id": "datameet_census_2011",
+      "rows": 640,
+      "reason": "2011 vintage only; predates 15 years of reorganisation."
+    },
+    {
+      "id": "india-land-simplified",
+      "rows": 1,
+      "reason": "bbox lat 21.94-37.09 - northern India only, not the whole country."
+    },
+    {
+      "id": "igod_ui_scrape",
+      "reason": "lgdirectory.gov.in citizen view is CAPTCHA-gated (OWASP_CSRFTOKEN + captchaAnswer). Not bypassed; brittle regardless."
+    }
+  ],
+  "projections": {
+    "storage": "EPSG:4326",
+    "equalArea": "+proj=aea +lat_1=20 +lat_2=35 +lat_0=27.5 +lon_0=82 +datum=WGS84 +units=m",
+    "$equalAreaNote": "Albers equal-area for India. Used to compute areaKm2 and the union-area invariant. Never use SHAPE_Area."
+  },
+  "invariants": {
+    "districtFeatureCount": 785,
+    "distinctStateIds": 36,
+    "unadministeredDistricts": 2,
+    "bbox": {
+      "minLon": 68,
+      "minLat": 6,
+      "maxLon": 98,
+      "maxLat": 38
+    },
+    "unionAreaKm2": 3270066,
+    "officialIndiaAreaKm2": 3287263,
+    "unionAreaTolerancePct": 2,
+    "maxOverlapKm2": 0
+  }
+}

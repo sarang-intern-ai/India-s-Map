@@ -1,0 +1,136 @@
+@import 'tailwindcss';
+@import 'maplibre-gl/dist/maplibre-gl.css';
+
+@theme {
+  /* Ink — text and structure (light, warm-neutral government-dashboard scale) */
+  --color-ink-50: #f3f6f9; /* page / panel base */
+  --color-ink-100: #e7ebef; /* very light divider */
+  --color-ink-200: #d9e1e8; /* light border */
+  --color-ink-300: #c8d2dc; /* input border */
+  --color-ink-400: #94a2b3; /* muted micro-labels */
+  --color-ink-500: #64748b; /* secondary text */
+  --color-ink-600: #475569;
+  --color-ink-700: #334155;
+  --color-ink-800: #1f2937; /* dark text */
+  --color-ink-900: #111827; /* strongest text */
+
+  /* Soft dashboard card elevation, inspired by the reference. */
+  --shadow-card: 0 2px 10px rgba(15, 23, 42, 0.08);
+
+  /* Accent — interactive secondary blue (buttons, focus, active toggle, selection UI) */
+  --color-accent-50: #eef5fb;
+  --color-accent-100: #d7e8f7;
+  --color-accent-200: #b3d3ef;
+  --color-accent-400: #4f9bd6;
+  --color-accent-500: #2b83c9;
+  --color-accent-600: #1e73be; /* secondary dashboard blue */
+  --color-accent-700: #155a97;
+  --color-accent-800: #10457a;
+  --color-accent-900: #0b3560;
+
+  /* Brand — primary deep government-dashboard blue for major headings and titles */
+  --color-brand-500: #2b83c9;
+  --color-brand-600: #1e73be;
+  --color-brand-700: #07579e; /* primary blue — section headings */
+  --color-brand-800: #063f72; /* deep — panel titles */
+  --color-brand-900: #042c50;
+
+  /* Flame — dashboard orange for highlighted reporting-section headers and accents */
+  --color-flame-50: #fef4e6;
+  --color-flame-100: #fde7c9;
+  --color-flame-400: #f9a838;
+  --color-flame-500: #f79b20;
+  --color-flame-600: #f28c00; /* primary orange accent */
+  --color-flame-700: #d97b00;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'tnum';
+  -webkit-font-smoothing: antialiased;
+  color: var(--color-ink-800);
+  background: var(--color-ink-50);
+}
+
+/* Numeric columns should align — district ids, areas, counts. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Light government-dashboard right-side panel. Applied to each panel root (StatePanel /
+ * DistrictPanel / the explorer column). It redefines the neutral `ink` scale + `white` for a
+ * clean light surface (off-white base, white cards, light-grey borders, charcoal text, muted-grey
+ * secondary text); every child utility (bg-white, text-ink-*, border-ink-*) inherits these, so no
+ * per-component color markup is needed and layout/behaviour are untouched. The unlayered
+ * `background` below beats the root's own `bg-white` (Tailwind utilities live in @layer), giving
+ * the panel base a shade below its white cards/inputs for clear hierarchy.
+ */
+.rp-panel {
+  /* The panel inherits the light warm-neutral ink scale from @theme; it only needs an off-white
+   * base a shade below its white cards for hierarchy. The unlayered `background-color` beats the
+   * root's own `bg-white` utility (utilities live in @layer). Soft rows/dividers/borders/text all
+   * come from the base tokens, so the panel and the rest of the app share one palette. */
+  background-color: var(--color-ink-50); /* off-white panel base (overrides the root's bg-white) */
+  color: var(--color-ink-800);
+}
+
+/* Light dashboard scrollbar for the right-side panel — no dark-theme remnants. */
+.rp-panel *::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.rp-panel *::-webkit-scrollbar-track {
+  background: transparent;
+}
+.rp-panel *::-webkit-scrollbar-thumb {
+  background: var(--color-ink-300);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.rp-panel *::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-400);
+  background-clip: content-box;
+}
+.rp-panel {
+  scrollbar-color: var(--color-ink-300) transparent;
+  scrollbar-width: thin;
+}
+
+/* District panel slide-in. Close is instant; opening gets a subtle entrance. */
+@keyframes panel-enter {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.panel-enter {
+  animation: panel-enter 180ms ease-out;
+}
+
+/* MapLibre draws its own focus ring on the canvas; keep ours consistent instead. */
+.maplibregl-canvas:focus-visible {
+  outline: 2px solid var(--color-accent-600);
+  outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

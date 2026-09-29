@@ -1,0 +1,161 @@
+{
+  "vintage": "lgd-2024",
+  "generatedAt": "2026-08-11T21:15:10.960Z",
+  "generator": "pipeline/05-simplify.ts",
+  "reconciliation": {
+    "rosterAvailable": false,
+    "mode": "partial",
+    "note": "No administrative roster available (DATA_GOV_IN_API_KEY not configured). Every district is status=\"unreconciled\" — statuses were not guessed."
+  },
+  "counts": {
+    "districtFeatures": 785,
+    "states": 28,
+    "unionTerritories": 8,
+    "unadministeredDistricts": 2,
+    "districtsWithoutGeometry": 0
+  },
+  "geometry": {
+    "crs": "EPSG:4326",
+    "equalAreaProjection": "+proj=aea +lat_1=20 +lat_2=35 +lat_0=27.5 +lon_0=82 +datum=WGS84 +units=m",
+    "sumOfPartsKm2": 3274899,
+    "dissolvedUnionKm2": 3270066,
+    "overlapKm2": 4833,
+    "officialIndiaAreaKm2": 3287263,
+    "unionDeltaPct": -0.523,
+    "bbox": [
+      68.1775,
+      6.7547,
+      97.4129,
+      37.0878
+    ]
+  },
+  "sources": [
+    {
+      "id": "lgd_districts",
+      "title": "LGD district boundaries",
+      "url": "https://pub-0429b8e3b5a946e69ea007df844a6f1c.r2.dev/admin/districts/LGD_Districts.geojson",
+      "licence": "CC0-1.0 / CC-BY-4.0",
+      "sha256": "95829298abdd0e80fc514b8c70787bdeef9aaf0e63b348177493045e8b22bab5",
+      "bytes": 93092856,
+      "attribution": {
+        "primary": {
+          "name": "Local Government Directory",
+          "url": "https://lgdirectory.gov.in/"
+        },
+        "publisher": {
+          "name": "yashveeeeeeer/india-geodata",
+          "url": "https://github.com/yashveeeeeeer/india-geodata"
+        },
+        "mirror": {
+          "name": "bharatlas",
+          "url": "https://bharatlas.com/"
+        }
+      }
+    },
+    {
+      "id": "lgd_states",
+      "title": "LGD state and UT boundaries",
+      "url": "https://pub-0429b8e3b5a946e69ea007df844a6f1c.r2.dev/admin/states/LGD_States.geojson",
+      "licence": "CC0-1.0 / CC-BY-4.0",
+      "sha256": "b18f424b2f60e5f3e10095e2e1f74ae134b68a95e556896e3f9ea37b860c1f3d",
+      "bytes": 27090105,
+      "attribution": {
+        "primary": {
+          "name": "Local Government Directory",
+          "url": "https://lgdirectory.gov.in/"
+        },
+        "publisher": {
+          "name": "yashveeeeeeer/india-geodata",
+          "url": "https://github.com/yashveeeeeeer/india-geodata"
+        }
+      }
+    },
+    {
+      "id": "india_soi_outline",
+      "title": "India national outline, Survey of India lineage",
+      "url": "https://raw.githubusercontent.com/yashveeeeeeer/india-geodata/main/data/administrative/country/india-soi.geojson",
+      "licence": "CC-BY-4.0",
+      "sha256": "e5321e2010d060c0bffa3b51a1e691af8fbf6063b848c02c123d61d4084cf820",
+      "bytes": 12330591,
+      "attribution": {
+        "primary": {
+          "name": "Survey of India",
+          "url": "https://surveyofindia.gov.in/"
+        },
+        "publisher": {
+          "name": "DataMeet",
+          "url": "https://github.com/datameet/maps"
+        }
+      }
+    },
+    {
+      "id": "ogd_lgd_districts",
+      "title": "Local Government Directory (LGD) - Districts",
+      "url": "https://api.data.gov.in/resource/37231365-78ba-44d5-ac22-3deec40b9197",
+      "licence": "GODL-India",
+      "sha256": null,
+      "bytes": null
+    }
+  ],
+  "licences": [
+    "CC0-1.0 / CC-BY-4.0",
+    "CC-BY-4.0",
+    "GODL-India"
+  ],
+  "knownGaps": [
+    {
+      "id": "rajasthan-dissolved-9",
+      "summary": "9 dissolved Rajasthan districts still present in geometry",
+      "detail": "Dissolved 2024-12-28; state reduced to 41 districts. Present here because the geometry vintage predates the change.",
+      "source": "Rajasthan cabinet decision, 28 December 2024 (widely reported; see docs/DATA.md section 6)"
+    },
+    {
+      "id": "ladakh-missing-5",
+      "summary": "5 Ladakh districts have no published boundary",
+      "detail": "Nubra, Sham, Changthang, Zanskar, Drass. Notified 2026-04-27. No open dataset carries these polygons; none is fabricated.",
+      "source": "MHA approval Aug 2024; LG notification signed 27 April 2026 (ladakh.gov.in)"
+    },
+    {
+      "id": "roster-not-fetched",
+      "summary": "Administrative roster not fetched — every district status is \"unreconciled\"",
+      "detail": "DATA_GOV_IN_API_KEY is not configured, so OGD resource 37231365-78ba-44d5-ac22-3deec40b9197 was not queried. No administrative data was invented.",
+      "source": "https://www.data.gov.in/"
+    }
+  ],
+  "knownGeometryIssues": [
+    {
+      "id": "raj-jalore-sanchor",
+      "summary": "779 overlaps 104",
+      "detail": "Sanchor was created out of Jalore in 2023 and DISSOLVED BACK INTO IT on 28 December 2024. The un-recut Jalore polygon is therefore correct for the current administrative reality. Carving Sanchor out of Jalore would make the current map wrong. The overlap resolves itself once Sanchor is marked status=dissolved."
+    },
+    {
+      "id": "raj-jodhpur-gramin",
+      "summary": "778 overlaps 107",
+      "detail": "Same as above - Jodhpur Rural/Gramin was dissolved back into Jodhpur on 28 December 2024."
+    },
+    {
+      "id": "heterogeneous-vintage",
+      "summary": "79% of district geometry is Census 2011 delineation",
+      "detail": "The layer is a Census 2011 base incrementally updated to roughly a 2023-24 LGD snapshot. It is not a single clean vintage."
+    },
+    {
+      "id": "shape-area-unusable",
+      "summary": "Source SHAPE_Area is 20.8% inflated and was discarded",
+      "detail": "Areas are recomputed in an Albers equal-area projection. See docs/DECISIONS.md D-010."
+    }
+  ],
+  "outputs": {
+    "states.topo.json": {
+      "bytes": 246000,
+      "sha256": "76a174f86a40606a400cc35f152724ab88b9769d97b368ea5e5ed0d566da40a0"
+    },
+    "districts.topo.json": {
+      "bytes": 980951,
+      "sha256": "6697b8ca87b7c3972951bcab2e183f4f623b430593ba96eb5864bdc9bc48fa22"
+    },
+    "hierarchy.json": {
+      "bytes": 393163,
+      "sha256": "0ad9d2d96c046766a4ceaff1f64f167e5e2e30c8368f9f43216d987b25728245"
+    }
+  }
+}

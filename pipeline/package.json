@@ -1,0 +1,24 @@
+{
+  "name": "indias-map-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Offline data pipeline for India's Map. Build-time only — never bundled into the frontend.",
+  "engines": {
+    "node": ">=22.6"
+  },
+  "scripts": {
+    "fetch:admin": "node 01-fetch-admin.ts",
+    "fetch:geometry": "node 02-fetch-geometry.ts",
+    "normalize": "node 03-normalize.ts",
+    "join": "node 04-join.ts",
+    "simplify": "node 05-simplify.ts",
+    "all": "npm run fetch:admin && npm run fetch:geometry && npm run normalize && npm run join && npm run simplify",
+    "all:geometry-only": "npm run fetch:geometry && npm run normalize && npm run join && npm run simplify"
+  },
+  "dependencies": {
+    "mapshaper": "^0.6.111",
+    "topojson-client": "^3.1.0",
+    "zod": "^3.23.8"
+  }
+}

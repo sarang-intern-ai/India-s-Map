@@ -1,0 +1,21 @@
+district_id,dataset_type,sub_type,value,unit,source,last_updated,notes,district_name
+490,Speech,YouTube,120,hours,Demo dataset,2026-08-14,Illustrative only,Pune
+490,Speech,Radio FM,80,hours,Demo dataset,2026-08-14,Illustrative only,Pune
+490,Speech,Podcasts,35,hours,Demo dataset,2026-08-14,Illustrative only,Pune
+490,Text,Newspapers,250000,words,Demo dataset,2026-08-14,Illustrative only,Pune
+490,Text,Books,120,documents,Demo dataset,2026-08-14,Illustrative only,Pune
+469,Speech,YouTube,96,hours,Demo dataset,2026-08-14,"District name column says Aurangabad; it is ignored — display resolves to Chhatrapati Sambhajinagar from id 469",Aurangabad
+469,Speech,Radio FM,60,hours,Demo dataset,2026-08-14,,Aurangabad
+469,Text,Newspapers,180000,words,Demo dataset,2026-08-14,,Aurangabad
+469,Text,Books,90,documents,Demo dataset,2026-08-14,,Aurangabad
+165,Speech,Radio FM,40,hours,Demo dataset,2026-08-14,,Mahoba
+165,Text,Newspapers,60000,words,Demo dataset,2026-08-14,,Mahoba
+165,Text,Books,25,documents,Demo dataset,2026-08-14,,Mahoba
+165,Text,Manuscripts,Available,,Demo dataset,2026-08-14,Text value with no unit,Mahoba
+52,Speech,Community Radio,true,,Demo dataset,2026-08-14,Boolean value with no unit,Pauri Garhwal
+52,Speech,YouTube,45,hours,Demo dataset,2026-08-14,,Pauri Garhwal
+52,Text,Books,30,documents,Demo dataset,2026-08-14,,Pauri Garhwal
+103,Speech,YouTube,20,hours,Demo dataset,2026-08-14,,Jaisalmer
+103,Text,Newspapers,15000,words,Demo dataset,2026-08-14,,Jaisalmer
+103,Text,Digitised Archives,false,,Demo dataset,2026-08-14,Boolean false with no unit,Jaisalmer
+103,Text,Folk Manuscripts,Limited,,Demo dataset,2026-08-14,Text value with no unit,Jaisalmer
